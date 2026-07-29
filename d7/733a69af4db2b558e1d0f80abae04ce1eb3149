@@ -1,0 +1,118 @@
+package.json
+  s_be6f11c6ce45df::t_70d9b5cb0f01e7 1-16
+apps/api/src/controllers/projects.controller.ts
+  s_be6f11c6ce45df::t_33293b6d195366 1-16
+apps/web/tailwind.config.ts
+  s_be6f11c6ce45df::t_32c3ef21d1b724 1-77
+apps/web/src/components/sections/about.tsx
+  s_be6f11c6ce45df::t_3ba9efab0387d2 1-51
+apps/web/src/components/sections/case-studies.tsx
+  s_be6f11c6ce45df::t_7ac5611ba90c49 1-103
+apps/web/src/components/ui/button.tsx
+  s_be6f11c6ce45df::t_883dd52b1d987a 1-31
+apps/api/nest-cli.json
+  s_be6f11c6ce45df::t_2788152f7ef570 1-8
+apps/web/src/components/ui/section.tsx
+  s_be6f11c6ce45df::t_e9bcce07eeba1d 1-19
+apps/api/src/controllers/profile.controller.ts
+  s_be6f11c6ce45df::t_161ebb39f22492 1-16
+apps/web/src/app/sitemap.ts
+  s_be6f11c6ce45df::t_950b62aaeed92b 1-49
+apps/web/src/app/layout.tsx
+  s_be6f11c6ce45df::t_999d1851ad899b 1-85
+apps/api/tsconfig.json
+  s_be6f11c6ce45df::t_778c1926f05389 1-20
+apps/web/.env.example
+  s_be6f11c6ce45df::t_2709ed8a49ecc9 1
+apps/web/src/components/sections/hero.tsx
+  s_be6f11c6ce45df::t_aeeae922745a90 1-96
+apps/web/src/lib/types.ts
+  s_be6f11c6ce45df::t_e656878d1bc4b5 1-46
+apps/web/src/components/header.tsx
+  s_be6f11c6ce45df::t_4a269c887dff09 1-65
+apps/web/src/components/ui/card.tsx
+  s_be6f11c6ce45df::t_02ebbbaebac199 1-20
+apps/api/package.json
+  s_be6f11c6ce45df::t_ed17deb3d22786 1-27
+apps/api/src/services/data.service.ts
+  s_be6f11c6ce45df::t_93035770706e7a 1-164
+apps/web/package.json
+  s_be6f11c6ce45df::t_c53c35d67b8671 1-25
+apps/web/next.config.ts
+  s_be6f11c6ce45df::t_de4ffa29f9ad72 1-33
+apps/api/.env.example
+  s_be6f11c6ce45df::t_1015d54e5a7676 1-4
+apps/web/src/components/sections/timeline.tsx
+  s_be6f11c6ce45df::t_71d9daeaa7f320 1-64
+apps/web/src/app/globals.css
+  s_be6f11c6ce45df::t_a3b8013f262002 1-97
+apps/api/src/controllers/health.controller.ts
+  s_be6f11c6ce45df::t_ca0f37cc07fc44 1-11
+apps/web/src/components/sections/contact.tsx
+  s_be6f11c6ce45df::t_543a503dca4dd0 1-76
+apps/web/src/components/sections/technologies.tsx
+  s_be6f11c6ce45df::t_7a2944b632bd97 1-61
+vercel.json
+  s_be6f11c6ce45df::t_a3b8debe5fef35 1-18
+apps/web/src/lib/api.ts
+  s_be6f11c6ce45df::t_779a8a0a4db830 1-197
+apps/api/src/main.ts
+  s_be6f11c6ce45df::t_c620525dcca5d8 1-37
+apps/web/src/components/sections/architecture.tsx
+  s_be6f11c6ce45df::t_6cfb15ca436740 1-68
+apps/web/src/lib/constants.ts
+  s_be6f11c6ce45df::t_22a8fa3bb70700 1-3
+apps/web/src/app/page.tsx
+  s_be6f11c6ce45df::t_14a81768579c89 1-93
+apps/web/README.md
+  s_be6f11c6ce45df::t_0f54b728e8745c 1-76
+apps/api/README.md
+  s_be6f11c6ce45df::t_28029121687e85 1-52
+apps/api/src/common/dtos/architecture.dto.ts
+  s_be6f11c6ce45df::t_d44b45946bc7d8 1-15
+.env.example
+  s_be6f11c6ce45df::t_a7e04134564678 1-7
+apps/api/src/app.module.ts
+  s_be6f11c6ce45df::t_95bcb6fb1c4a55 1-18
+README.md
+  s_be6f11c6ce45df::t_5ca1d57b22982f 1-226
+apps/api/.dockerignore
+  s_be6f11c6ce45df::t_f95305c043f05c 1-9
+apps/api/src/common/dtos/profile.dto.ts
+  s_be6f11c6ce45df::t_e7dd29a4f410fe 1-15
+apps/api/src/controllers/architecture.controller.ts
+  s_be6f11c6ce45df::t_5d643bc9079c89 1-16
+apps/api/Dockerfile
+  s_be6f11c6ce45df::t_a7144477988045 1-13
+apps/web/postcss.config.js
+  s_be6f11c6ce45df::t_0e6dbe2ca8a5f0 1-6
+.gitignore
+  s_be6f11c6ce45df::t_ad1956dd6f450f 1-16
+apps/api/src/common/dtos/projects.dto.ts
+  s_be6f11c6ce45df::t_b643f574961c08 1-14
+apps/web/tsconfig.json
+  s_be6f11c6ce45df::t_c60cc6b8bee4c1 1-32
+apps/web/src/components/footer.tsx
+  s_be6f11c6ce45df::t_7a9b5f461e4124 1-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "d7733a69af4db2b558e1d0f80abae04ce1eb3149",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  },
+  "sessions": {
+    "s_be6f11c6ce45df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdd54ecc-298f-4821-ae42-5ceed01417cf",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Irwin Braganza <irwinbraganza@gmail.com>"
+    }
+  }
+}
