@@ -1,6 +1,4 @@
-import type { NextConfig } from 'next';
-
-const config: NextConfig = {
+const config = {
   reactStrictMode: true,
   swcMinify: true,
   compress: true,
@@ -30,4 +28,4 @@ const config: NextConfig = {
   ]
 };
 
-export default config;
+module.exports = config;
