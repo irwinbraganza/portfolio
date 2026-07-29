@@ -28,7 +28,7 @@ export const Header = () => {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm text-neutral-700 dark:text-neutral-300 hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+              className="text-sm text-neutral-700 dark:text-neutral-300 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
             >
               {item.label}
             </a>

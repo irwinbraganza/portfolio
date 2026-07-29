@@ -20,7 +20,7 @@ export const Footer = () => {
                   href="https://linkedin.com/in/irwinbraganza"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
                 >
                   LinkedIn
                 </a>
@@ -30,7 +30,7 @@ export const Footer = () => {
                   href="https://github.com/irwinbraganza"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
                 >
                   GitHub
                 </a>
@@ -38,7 +38,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="mailto:irwin.braganza@deliveryhero.com"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
                 >
                   Email
                 </a>
@@ -53,7 +53,7 @@ export const Footer = () => {
                 <a
                   href="/resume.pdf"
                   download
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
                 >
                   Resume (PDF)
                 </a>
@@ -61,7 +61,7 @@ export const Footer = () => {
               <li>
                 <a
                   href="#architecture"
-                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+                  className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
                 >
                   Architecture
                 </a>
