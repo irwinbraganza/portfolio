@@ -1,4 +1,4 @@
-export class ArchitectureDto {
+export interface ArchitectureDto {
   title: string;
   description: string;
   diagram: {

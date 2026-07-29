@@ -1,4 +1,4 @@
-export class CaseStudyDto {
+export interface CaseStudyDto {
   id: string;
   title: string;
   context: string;
@@ -9,6 +9,6 @@ export class CaseStudyDto {
   lessons: string[];
 }
 
-export class ProjectsDto {
+export interface ProjectsDto {
   caseStudies: CaseStudyDto[];
 }

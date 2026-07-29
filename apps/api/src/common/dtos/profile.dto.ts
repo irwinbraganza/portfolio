@@ -1,4 +1,4 @@
-export class ProfileDto {
+export interface ProfileDto {
   name: string;
   title: string;
   tagline: string;
