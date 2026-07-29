@@ -31,40 +31,40 @@ export const Contact = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 bg-neutral-100 dark:bg-neutral-900 rounded-lg">
-            <p className="text-sm font-semibold text-forest-700 dark:text-forest-400 mb-2">
+            <p className="text-sm font-semibold text-forest-800 dark:text-forest-300 mb-2">
               Email
             </p>
             <a
               href="mailto:irwin.braganza@deliveryhero.com"
-              className="text-neutral-900 dark:text-neutral-50 font-medium break-all hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+              className="text-neutral-900 dark:text-neutral-50 font-medium break-all hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
             >
               irwin.braganza@deliveryhero.com
             </a>
           </div>
 
           <div className="p-6 bg-neutral-100 dark:bg-neutral-900 rounded-lg">
-            <p className="text-sm font-semibold text-forest-700 dark:text-forest-400 mb-2">
+            <p className="text-sm font-semibold text-forest-800 dark:text-forest-300 mb-2">
               LinkedIn
             </p>
             <a
               href="https://linkedin.com/in/irwinbraganza"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-900 dark:text-neutral-50 font-medium hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+              className="text-neutral-900 dark:text-neutral-50 font-medium hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
             >
               irwinbraganza
             </a>
           </div>
 
           <div className="p-6 bg-neutral-100 dark:bg-neutral-900 rounded-lg">
-            <p className="text-sm font-semibold text-forest-700 dark:text-forest-400 mb-2">
+            <p className="text-sm font-semibold text-forest-800 dark:text-forest-300 mb-2">
               GitHub
             </p>
             <a
               href="https://github.com/irwinbraganza"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-900 dark:text-neutral-50 font-medium hover:text-forest-700 dark:hover:text-forest-400 transition-colors"
+              className="text-neutral-900 dark:text-neutral-50 font-medium hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
             >
               irwinbraganza
             </a>

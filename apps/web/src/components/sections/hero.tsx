@@ -54,7 +54,7 @@ export const Hero = ({ name, title, tagline, secondaryTagline, links }: HeroProp
               href={links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
+              className="text-neutral-600 dark:text-neutral-400 hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
               aria-label="LinkedIn"
             >
               <span className="text-sm font-medium">LinkedIn</span>
@@ -63,14 +63,14 @@ export const Hero = ({ name, title, tagline, secondaryTagline, links }: HeroProp
               href={links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
+              className="text-neutral-600 dark:text-neutral-400 hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
               aria-label="GitHub"
             >
               <span className="text-sm font-medium">GitHub</span>
             </a>
             <a
               href={links.email}
-              className="text-neutral-600 dark:text-neutral-400 hover:text-forest-800 dark:hover:text-forest-300 transition-colors"
+              className="text-neutral-600 dark:text-neutral-400 hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
               aria-label="Email"
             >
               <span className="text-sm font-medium">Email</span>

@@ -16,7 +16,7 @@
   }
 
   a {
-    @apply transition-colors duration-200 text-forest-800 hover:text-forest-900 dark:text-forest-300 dark:hover:text-forest-200;
+    @apply transition-colors duration-200 text-forest-800 hover:text-forest-600 dark:text-forest-300 dark:hover:text-forest-100;
   }
 
   button {
