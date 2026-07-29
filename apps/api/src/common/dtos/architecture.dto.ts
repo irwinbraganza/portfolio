@@ -1,12 +1,12 @@
-export interface ArchitectureDto {
-  title: string;
-  description: string;
-  diagram: {
+export class ArchitectureDto {
+  title!: string;
+  description!: string;
+  diagram!: {
     stages: string[];
     explanation: string;
   };
-  topics: string[];
-  technologies: {
+  topics!: string[];
+  technologies!: {
     leadership: string[];
     backend: string[];
     frontend: string[];
