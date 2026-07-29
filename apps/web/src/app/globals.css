@@ -42,7 +42,7 @@
   }
 
   .button-primary {
-    @apply button-base bg-forest-800 text-white shadow-md hover:bg-forest-600 hover:shadow-xl hover:scale-105 dark:bg-forest-700 dark:hover:bg-forest-600 dark:hover:shadow-xl dark:hover:scale-105 active:scale-95;
+    @apply button-base bg-forest-800 text-white shadow-md hover:bg-forest-600 hover:text-white hover:shadow-xl hover:scale-105 dark:bg-forest-700 dark:hover:bg-forest-600 dark:hover:text-white dark:hover:shadow-xl dark:hover:scale-105 active:scale-95;
   }
 
   .button-secondary {
