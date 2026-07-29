@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-900 transition-colors duration-200;
+  }
+
+  dark body {
+    @apply bg-neutral-950 text-neutral-50;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-8;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .button-base {
+    @apply inline-flex items-center justify-center px-4 md:px-6 py-2.5 md:py-3 rounded font-medium text-sm md:text-base transition-all duration-200;
+  }
+
+  .button-primary {
+    @apply button-base bg-forest-700 text-white hover:bg-forest-800 active:scale-95;
+  }
+
+  .button-secondary {
+    @apply button-base border border-forest-700 text-forest-700 hover:bg-forest-50 dark:hover:bg-forest-950 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:shadow-lg hover:border-forest-300 dark:hover:border-forest-700;
+  }
+
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-bold tracking-tight;
+  }
+
+  .text-muted {
+    @apply text-neutral-600 dark:text-neutral-400;
+  }
+
+  .text-accent {
+    @apply text-forest-700 dark:text-forest-400;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+
+  a {
+    @apply underline;
+  }
+}

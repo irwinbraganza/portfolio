@@ -1,0 +1,16 @@
+{
+  "name": "@irwin/portfolio",
+  "version": "1.0.0",
+  "description": "Engineering portfolio - production-quality site for engineering leadership roles",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "pnpm --parallel -r run dev",
+    "build": "pnpm --parallel -r run build",
+    "start": "pnpm --parallel -r run start",
+    "lint": "pnpm --parallel -r run lint"
+  }
+}
