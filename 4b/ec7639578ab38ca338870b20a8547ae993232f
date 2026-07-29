@@ -1,0 +1,28 @@
+apps/api/src/common/dtos/profile.dto.ts
+  s_be6f11c6ce45df::t_a3acb5b3148c0b 1-10
+apps/api/src/common/dtos/architecture.dto.ts
+  s_be6f11c6ce45df::t_7afc096928888a 1-4,8-9
+apps/api/src/common/dtos/projects.dto.ts
+  s_be6f11c6ce45df::t_3004a4c4930df1 1-9,12-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4bec7639578ab38ca338870b20a8547ae993232f",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  },
+  "sessions": {
+    "s_be6f11c6ce45df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdd54ecc-298f-4821-ae42-5ceed01417cf",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Irwin Braganza <irwinbraganza@gmail.com>"
+    }
+  }
+}
