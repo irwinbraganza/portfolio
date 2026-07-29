@@ -1,0 +1,28 @@
+apps/web/src/app/globals.css
+  s_be6f11c6ce45df::t_61e5003617bdfd 77
+  s_be6f11c6ce45df::t_29c0b1f20e6540 19,25-27
+  s_be6f11c6ce45df::t_1f2f73bdacb57d 45,49
+  s_be6f11c6ce45df::t_c8eb3cf8312ee7 57
+  s_be6f11c6ce45df::t_0c2a9f3cf4d454 28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "d1a8f44eba6e56b6c38aeea5722dc704bc85197f",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  },
+  "sessions": {
+    "s_be6f11c6ce45df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdd54ecc-298f-4821-ae42-5ceed01417cf",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Irwin Braganza <irwinbraganza@gmail.com>"
+    }
+  }
+}
