@@ -1,0 +1,36 @@
+apps/web/src/app/globals.css
+  s_be6f11c6ce45df::t_adb8138f7ac30e 57
+  s_be6f11c6ce45df::t_0811082032669c 19,27
+  s_be6f11c6ce45df::t_ec5b9bbcdd3781 77
+  s_be6f11c6ce45df::t_b5096bf3fd61ed 45,49
+apps/web/src/components/header.tsx
+  s_be6f11c6ce45df::t_e47e7b3e7eff4b 31
+apps/web/src/components/sections/hero.tsx
+  s_be6f11c6ce45df::t_724561dd4a89c0 33
+  s_be6f11c6ce45df::t_0a440cf5d94e7c 82,84
+  s_be6f11c6ce45df::t_bc2fa81d25a49a 57,66,73
+  s_be6f11c6ce45df::t_7607d6625d23a8 21
+apps/web/src/components/footer.tsx
+  s_be6f11c6ce45df::t_38bb93c82c755c 23,33,41,56,64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "0e15bbd7984f71d3e63aeb0a97245d4de8bf6385",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  },
+  "sessions": {
+    "s_be6f11c6ce45df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdd54ecc-298f-4821-ae42-5ceed01417cf",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Irwin Braganza <irwinbraganza@gmail.com>"
+    }
+  }
+}
