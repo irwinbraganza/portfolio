@@ -1,0 +1,25 @@
+docs/DEPLOYMENT.md
+  s_be6f11c6ce45df::t_d96ebb9ecede56 134-151,165,172-176,180,182,193-215
+  s_be6f11c6ce45df::t_70f1d735fc9bae 216
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "6069194a201dfcf7fadbccdcace831058e62eb7d",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  },
+  "sessions": {
+    "s_be6f11c6ce45df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdd54ecc-298f-4821-ae42-5ceed01417cf",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Irwin Braganza <irwinbraganza@gmail.com>"
+    }
+  }
+}
