@@ -13,4 +13,3 @@ build/
 *.swo
 *~
 .turbo/
-pnpm-lock.yaml
