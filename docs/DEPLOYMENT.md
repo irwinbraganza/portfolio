@@ -2,154 +2,187 @@
 
 Complete instructions for deploying the portfolio to production.
 
-## Prerequisites
+## Current Status
 
-- Vercel account (for web)
-- Google Cloud project with Cloud Run enabled (for API)
-- Git repository connected to services
-- Custom domain (optional)
+- **Web (Vercel):** [https://irwinbraganza.com](https://irwinbraganza.com) (auto-deploys on push to `apps/web/`)
+- **API (Cloud Run):** [https://portfolio-api-q2gnotnknq-uc.a.run.app](https://portfolio-api-q2gnotnknq-uc.a.run.app) (auto-deploys via GitHub Actions on push to `apps/api/`)
 
 ## Web Deployment (Vercel)
 
-### Option 1: Vercel Dashboard (Recommended)
+### Initial Setup (One-Time)
 
-1. **Connect Repository**
-   - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Select your repository
-   - Vercel auto-detects Next.js
-
-2. **Configure Settings**
-   - **Framework Preset:** Next.js
+1. Go to [vercel.com](https://vercel.com)
+2. Click "New Project" and select your repository
+3. Configure:
    - **Root Directory:** `apps/web`
-   - **Build Command:** `pnpm build`
-   - **Output Directory:** `.next`
+   - Vercel auto-detects Next.js build settings
+4. Set environment variables:
+   - Go to Settings → Environment Variables
+   - Add `NEXT_PUBLIC_API_URL` for **Production** environment
+   - Value: `https://portfolio-api-q2gnotnknq-uc.a.run.app` (no `/api` suffix)
+5. Click "Deploy"
 
-3. **Environment Variables**
-   - Add `NEXT_PUBLIC_API_URL`: Production API URL
-     - Example: `https://api.yourdomain.com`
+### Deploying Changes
 
-4. **Deploy**
-   - Click "Deploy"
-   - Wait for build to complete
-   - Get production URL
-
-5. **Custom Domain** (Optional)
-   - Go to Settings → Domains
-   - Add your domain
-   - Update DNS records per Vercel instructions
-
-### Option 2: Vercel CLI
+After initial setup, deployment is automatic:
 
 ```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Login to Vercel
-vercel login
-
-# Deploy from root
-cd apps/web
-vercel --prod \
-  --env NEXT_PUBLIC_API_URL=https://api.yourdomain.com
+git add apps/web/...
+git commit -m "feat: update hero section"
+git push origin main
 ```
 
-### Option 3: GitHub Actions
+Vercel auto-detects the push and deploys. Monitor at: Vercel Dashboard → Project → Deployments
 
-Create `.github/workflows/deploy-web.yml`:
+Or deploy manually:
 
-```yaml
-name: Deploy Web
-
-on:
-  push:
-    branches: [main]
-    paths:
-      - 'apps/web/**'
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm i -g vercel
-      - run: vercel --prod
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          NEXT_PUBLIC_API_URL: ${{ secrets.API_URL }}
+```bash
+cd apps/web
+vercel --prod
 ```
 
 ## API Deployment (Google Cloud Run)
 
-### Option 1: Cloud Run Console
+### Initial Setup (One-Time)
 
-1. **Prepare Docker Image**
-   ```bash
-   # Set GCP project
-   gcloud config set project YOUR_PROJECT_ID
-   
-   # Build and push image
-   gcloud builds submit \
-     --tag gcr.io/YOUR_PROJECT_ID/portfolio-api \
-     --directory apps/api
-   ```
-
-2. **Deploy to Cloud Run**
-   - Go to [Cloud Run Console](https://console.cloud.google.com/run)
-   - Click "Create Service"
-   - Select the image: `gcr.io/YOUR_PROJECT_ID/portfolio-api`
-   - **Service settings:**
-     - Authentication: Allow unauthenticated invocations
-     - Memory: 256 MB
-     - CPU: 1
-   - **Environment variables:**
-     - `PORT`: `3001`
-     - `CORS_ORIGIN`: Your web domain (e.g., `https://yourdomain.com`)
-
-3. **Configure Domain** (Optional)
-   - Go to "Manage Custom Domains"
-   - Map `api.yourdomain.com` to the service
-
-### Option 2: Cloud Build + Cloud Run (Recommended)
+#### 1. Create GCP Service Account
 
 ```bash
-# Build with Cloud Build (handles x86_64 architecture)
-gcloud builds submit . --config=cloudbuild.yaml
+gcloud iam service-accounts create portfolio-api-deployer \
+  --display-name="Portfolio API Deployer"
 
-# Deploy to Cloud Run
-gcloud run deploy portfolio-api \
-  --image gcr.io/YOUR_PROJECT_ID/portfolio-api:latest \
-  --platform=managed \
-  --region=us-central1 \
-  --port=3001 \
-  --allow-unauthenticated \
-  --set-env-vars CORS_ORIGIN=https://yourdomain.com
+gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
+  --member="serviceAccount:portfolio-api-deployer@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/cloudbuild.builds.editor"
+
+gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
+  --member="serviceAccount:portfolio-api-deployer@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/run.admin"
+
+gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
+  --member="serviceAccount:portfolio-api-deployer@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountUser"
+
+gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
+  --member="serviceAccount:portfolio-api-deployer@YOUR_PROJECT_ID.iam.gserviceaccount.com" \
+  --role="roles/storage.admin"
 ```
 
-### Option 3: Automated Deployment with GitHub Actions
+#### 2. Create and Download Key
 
-#### Prerequisites
+```bash
+gcloud iam service-accounts keys create key.json \
+  --iam-account=portfolio-api-deployer@YOUR_PROJECT_ID.iam.gserviceaccount.com
+```
 
-Create a GCP service account with these roles:
-- Cloud Build Editor
-- Cloud Run Admin
-- Service Account User
-- Service Usage Consumer
-- Storage Admin
+#### 3. Add GitHub Secrets
 
-Download the service account JSON key and add it as `GCP_SA_KEY` GitHub Secret.
+In your repository settings (Settings → Secrets and variables → Actions):
 
-Add these GitHub Secrets:
 - `GCP_PROJECT_ID`: Your GCP project ID
-- `GCP_SA_KEY`: Service account JSON (base64 encoded if using actions/github-script)
-- `WEB_URL`: Your frontend URL (e.g., `https://yourdomain.com`)
+- `GCP_SA_KEY`: Contents of `key.json` (base64 encoded if needed)
+- `WEB_URL`: Your frontend URL (e.g., `https://irwinbraganza.com`)
 
-#### Setup
+#### 4. Verify Files Exist
 
-Create `.github/workflows/deploy-api.yml`:
+These files must be in the repository root:
+
+- `.gcloudignore` — Excludes files from Cloud Build upload
+- `.dockerignore` — Excludes files from Docker build context
+- `cloudbuild.yaml` — Cloud Build configuration
+- `.github/workflows/deploy-api.yml` — GitHub Actions workflow
+
+And ensure:
+
+- `pnpm-lock.yaml` is committed to git (not in `.gitignore`)
+
+### Deploy Changes After Setup
+
+After setup, deployment is automatic:
+
+```bash
+git add apps/api/...
+git commit -m "feat: add new API endpoint"
+git push origin main
+```
+
+GitHub Actions automatically:
+1. Detects the push to `apps/api/`
+2. Authenticates to GCP
+3. Builds Docker image with `cloudbuild.yaml`
+4. Pushes image to Google Container Registry
+5. Deploys to Cloud Run
+
+Monitor at: GitHub → Actions → Deploy API workflow
+
+## Important Files
+
+### `.gcloudignore`
+
+Excludes files from Cloud Build upload. Critical: do NOT exclude `pnpm-lock.yaml` or `package.json`.
+
+```
+.git
+.gitignore
+.gcloudignore
+node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+**/dist/
+**/build/
+.next/
+.turbo/
+coverage/
+.vscode/
+.idea/
+```
+
+### `.dockerignore`
+
+Excludes files from Docker build context. Must allow `pnpm-lock.yaml` and `package.json`.
+
+```
+.git
+.gitignore
+node_modules
+.env
+.env.local
+.DS_Store
+*.log
+.next
+.turbo
+coverage
+.vscode
+.idea
+```
+
+### `cloudbuild.yaml`
+
+Builds Docker image with x86_64 architecture (avoids ARM64 incompatibility from macOS builds).
+
+```yaml
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/portfolio-api:latest'
+      - '.'
+    env:
+      - 'DOCKER_BUILDKIT=1'
+
+images:
+  - 'gcr.io/$PROJECT_ID/portfolio-api:latest'
+
+options:
+  machineType: 'N1_HIGHCPU_8'
+```
+
+### `.github/workflows/deploy-api.yml`
+
+GitHub Actions workflow that triggers Cloud Build on push to `apps/api/`.
 
 ```yaml
 name: Deploy API
@@ -169,7 +202,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
@@ -179,7 +212,7 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
       - run: gcloud builds submit . --config=cloudbuild.yaml
-      
+
       - run: |
           gcloud run deploy portfolio-api \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/portfolio-api:latest \
@@ -190,150 +223,110 @@ jobs:
             --set-env-vars CORS_ORIGIN=${{ secrets.WEB_URL }}
 ```
 
-#### Important Files
-
-Ensure these files exist and are properly configured:
-
-**`.gcloudignore`** — Excludes files from Cloud Build upload:
-```
-.git
-node_modules
-.env
-.env.local
-```
-
-**`.dockerignore`** — Excludes files from Docker build context:
-```
-.git
-node_modules
-.env
-.env.local
-```
-
-**`pnpm-lock.yaml`** — Must be tracked in git (remove from `.gitignore` if present)
-
-**`cloudbuild.yaml`** — Configured to build with x86_64 architecture
-
 ## Domain Configuration
 
-### DNS Setup
+### For Vercel (Web)
 
-**For Vercel:**
-```
-CNAME yourdomain.com → cname.vercel-dns.com
-```
+Go to Settings → Domains and add your custom domain. Vercel provides DNS instructions.
 
-**For Cloud Run:**
-```
-CNAME api.yourdomain.com → ghs.googleusercontent.com
-```
+### For Cloud Run (API)
 
-Check service documentation for exact DNS records.
+Optional: Map `api.yourdomain.com` to Cloud Run service.
 
-### HTTPS
-
-Both Vercel and Cloud Run provide free SSL certificates. Configuration is automatic.
+Go to Cloud Run → Manage Custom Domains and follow setup instructions.
 
 ## Verification
 
-After deployment:
+### Web
 
-1. **Web**
-   ```bash
-   curl https://yourdomain.com
-   # Should return HTML with proper meta tags
-   ```
+```bash
+curl https://irwinbraganza.com
+# Should return HTML with proper meta tags
+```
 
-2. **API**
-   ```bash
-   curl https://api.yourdomain.com/api/health
-   # Should return: {"status":"ok","timestamp":"..."}
-   ```
+### API
 
-3. **Integration**
-   - Visit website
-   - Verify data loads from API
-   - Check browser console for errors
+```bash
+curl https://portfolio-api-q2gnotnknq-uc.a.run.app/api/health
+# Should return: {"status":"ok","timestamp":"..."}
+
+curl https://portfolio-api-q2gnotnknq-uc.a.run.app/api/profile
+# Should return: profile JSON data
+```
+
+### Integration
+
+Visit [https://irwinbraganza.com](https://irwinbraganza.com) and verify:
+
+- Page loads
+- Data displays from API
+- No console errors
+- All sections render
 
 ## Monitoring
 
 ### Vercel
-- Analytics: Dashboard → Analytics
-- Errors: Dashboard → Functions → Logs
-- Performance: Dashboard → Speed Insights
 
-### Google Cloud Run
-- Logs: Cloud Run → portfolio-api → Logs
-- Metrics: Cloud Run → portfolio-api → Metrics
-- Errors: Cloud Logging → Query results
+- Deployments: Vercel Dashboard → Project → Deployments
+- Analytics: Vercel Dashboard → Project → Analytics
+- Errors: Vercel Dashboard → Project → Functions → Logs
+
+### Cloud Run
+
+- Logs: [Cloud Console](https://console.cloud.google.com/run) → portfolio-api → Logs
+- Metrics: Cloud Console → portfolio-api → Metrics
+- Build history: Cloud Console → Cloud Build
 
 ## Rollback
 
 ### Vercel
+
 ```bash
 vercel rollback
-# Select previous deployment to rollback
+# Select previous deployment
 ```
 
-### Google Cloud Run
+### Cloud Run
+
 ```bash
 gcloud run deploy portfolio-api \
-  --image=gcr.io/YOUR_PROJECT_ID/portfolio-api:PREVIOUS_TAG \
-  --platform=managed \
-  --region=us-central1
+  --image gcr.io/YOUR_PROJECT_ID/portfolio-api:PREVIOUS_TAG \
+  --platform managed \
+  --region us-central1
 ```
-
-## Cost Estimation
-
-**Vercel (Web)**
-- Free tier: 100 GB bandwidth/month, unlimited deployments
-- Pro tier: $20/month for additional features
-
-**Google Cloud Run (API)**
-- Free tier: 2 million requests/month, 360,000 GB-seconds/month
-- Charges apply only above free limits
-- Estimated cost for low traffic: $0-5/month
 
 ## Troubleshooting
 
 ### API Not Responding
 
 ```bash
-# Check Cloud Run service status
 gcloud run services describe portfolio-api --region=us-central1
-
-# Check recent logs
 gcloud run services log read portfolio-api --region=us-central1 --limit=50
 ```
 
 ### CORS Errors
 
-Verify `CORS_ORIGIN` environment variable matches your web domain:
+Verify `CORS_ORIGIN` env var in Cloud Run matches your web domain:
 
 ```bash
-# Check current value
 gcloud run services describe portfolio-api \
   --region=us-central1 \
-  --format='value(spec.template.spec.containers[0].env)'
+  --format='value(spec.template.spec.containers[0].env[?name==CORS_ORIGIN].value)'
 ```
 
 ### Build Failures
 
 ```bash
-# Check Cloud Build logs
 gcloud builds log <BUILD_ID>
-
-# Rebuild
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/portfolio-api --directory apps/api
 ```
 
-## Maintenance
+## Cost
 
-- Update dependencies quarterly
-- Monitor error logs weekly
-- Test API availability monthly
-- Verify DNS configuration annually
+### Vercel (Web)
 
-For detailed platform documentation:
-- [Vercel Docs](https://vercel.com/docs)
-- [Google Cloud Run Docs](https://cloud.google.com/run/docs)
+- Free tier: 100 GB bandwidth/month, unlimited deployments
+
+### Cloud Run (API)
+
+- Free tier: 2 million requests/month, 360,000 GB-seconds/month
+- Typical portfolio: $0-5/month
