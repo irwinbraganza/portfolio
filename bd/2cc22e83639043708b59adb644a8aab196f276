@@ -1,0 +1,31 @@
+README.md
+  s_be6f11c6ce45df::t_86d4c08eb6833d 143
+apps/web/README.md
+  s_be6f11c6ce45df::t_c81bd035fdf9b1 17
+docs/TESTING_CHECKLIST.md
+  s_be6f11c6ce45df::t_3fa5d2a040b515 121
+  s_be6f11c6ce45df::t_f03cb41217e827 129,131-136
+  s_be6f11c6ce45df::t_3b966b3f661663 114
+  s_be6f11c6ce45df::t_f558067950d5f0 122-123
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "bd2cc22e83639043708b59adb644a8aab196f276",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  },
+  "sessions": {
+    "s_be6f11c6ce45df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdd54ecc-298f-4821-ae42-5ceed01417cf",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Irwin Braganza <irwinbraganza@gmail.com>"
+    }
+  }
+}
