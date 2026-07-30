@@ -1,0 +1,12 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "d86d77e6d01330100b1c997f7143f3bb091b00cd",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  }
+}
