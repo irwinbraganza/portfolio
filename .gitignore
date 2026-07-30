@@ -13,3 +13,5 @@ build/
 *.swo
 *~
 .turbo/
+.vercel
+.env*
