@@ -1,4 +1,6 @@
-# .git
+!pnpm-lock.yaml
+!package.json
+
 .git
 .gitignore
 .gcloudignore
