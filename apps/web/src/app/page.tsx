@@ -6,7 +6,8 @@ import { About } from '@/components/sections/about';
 import { CaseStudies } from '@/components/sections/case-studies';
 import { ArchitectureSection } from '@/components/sections/architecture';
 import { TechnologiesSection } from '@/components/sections/technologies';
-import { Timeline } from '@/components/sections/timeline';
+import { Experience } from '@/components/sections/experience';
+import { Education } from '@/components/sections/education';
 import { Contact } from '@/components/sections/contact';
 import { getProfile, getProjects, getArchitecture } from '@/lib/api';
 import { Profile, Projects, Architecture } from '@/lib/types';
@@ -75,8 +76,7 @@ export default function Home() {
       <About
         about={profile.about}
         leadershipThemes={profile.leadershipThemes}
-        performanceRating={profile.performanceRating}
-        performanceText={profile.performanceText}
+        leadershipRecognition={profile.leadershipRecognition}
       />
 
       <CaseStudies caseStudies={projects.caseStudies} />
@@ -85,9 +85,11 @@ export default function Home() {
 
       <TechnologiesSection technologies={architecture.technologies} />
 
-      <Timeline />
+      <Experience />
 
-      <Contact />
+      <Education />
+
+      <Contact email={profile.links.email} />
     </>
   );
 }

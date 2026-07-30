@@ -9,7 +9,7 @@ interface TechnologiesSectionProps {
 export const TechnologiesSection = ({ technologies }: TechnologiesSectionProps) => {
   const groups = [
     {
-      title: 'Leadership & Product',
+      title: 'Leadership & Delivery',
       items: technologies.leadership,
       color: 'forest'
     },
@@ -28,18 +28,18 @@ export const TechnologiesSection = ({ technologies }: TechnologiesSectionProps) 
       items: technologies.cloud,
       color: 'forest'
     }
-  ];
+  ].filter(group => group.items.length > 0);
 
   return (
     <Section id="technologies">
-      <h2 className="heading-2 mb-12 text-neutral-900 dark:text-neutral-50">
+      <h2 className="heading-2 mb-12 text-slate-50">
         Technologies & Capabilities
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6">
         {groups.map((group, idx) => (
-          <Card key={idx} className="hover:shadow-md dark:hover:shadow-xl">
-            <h3 className="heading-3 text-lg font-semibold mb-6 text-neutral-900 dark:text-neutral-50">
+          <Card key={idx} className="hover:shadow-md hover:shadow-blue-500/20">
+            <h3 className="heading-3 text-lg font-semibold mb-6 text-slate-50">
               {group.title}
             </h3>
 
@@ -47,7 +47,7 @@ export const TechnologiesSection = ({ technologies }: TechnologiesSectionProps) 
               {group.items.map((item, itemIdx) => (
                 <span
                   key={itemIdx}
-                  className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-forest-100 dark:bg-forest-900 text-forest-700 dark:text-forest-300 border border-forest-200 dark:border-forest-800"
+                  className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-blue-900 text-blue-100 border border-blue-700"
                 >
                   {item}
                 </span>

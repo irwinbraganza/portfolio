@@ -5,8 +5,9 @@ export interface Profile {
   secondaryTagline: string;
   about: string;
   leadershipThemes: string[];
-  performanceRating: string;
-  performanceText: string;
+  leadershipRecognition: string;
+  languages: string;
+  location: string;
   links: {
     linkedin: string;
     github: string;

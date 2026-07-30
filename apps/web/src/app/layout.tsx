@@ -7,7 +7,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: {
     template: '%s | Irwin Braganza',
-    default: SITE_NAME
+    default: 'Irwin Braganza | Acting Engineering Manager & Senior Software Engineer'
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
@@ -73,7 +73,7 @@ export default function RootLayout({
         <link rel="canonical" href={SITE_URL} />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className="bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50">
+      <body className="bg-slate-900 text-slate-50">
         <Header />
         <main>
           {children}

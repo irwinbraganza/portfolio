@@ -8,18 +8,17 @@ export const Header = () => {
 
   const navItems = [
     { label: 'About', href: '#about' },
-    { label: 'Leadership', href: '#leadership' },
     { label: 'Case Studies', href: '#case-studies' },
     { label: 'Architecture', href: '#architecture' },
     { label: 'Technologies', href: '#technologies' },
-    { label: 'Timeline', href: '#timeline' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Contact', href: '#contact' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-neutral-50 dark:bg-neutral-950 border-b border-neutral-200 dark:border-neutral-800">
+    <header className="sticky top-0 z-50 bg-slate-900 border-b border-slate-700">
       <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 py-4 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-neutral-900 dark:text-neutral-50">
+        <Link href="/" className="text-xl font-bold text-slate-50">
           Irwin Braganza
         </Link>
 
@@ -28,7 +27,7 @@ export const Header = () => {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm text-neutral-700 dark:text-neutral-300 hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
+              className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
             >
               {item.label}
             </a>
@@ -37,8 +36,10 @@ export const Header = () => {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-neutral-700 dark:text-neutral-300"
+          className="md:hidden p-2 text-slate-400"
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -47,12 +48,12 @@ export const Header = () => {
       </div>
 
       {isOpen && (
-        <nav className="md:hidden border-t border-neutral-200 dark:border-neutral-800 px-4 py-4">
+        <nav className="md:hidden border-t border-slate-700 px-4 py-4" id="mobile-nav">
           {navItems.map(item => (
             <a
               key={item.href}
               href={item.href}
-              className="block py-2 text-sm text-neutral-700 dark:text-neutral-300 hover:text-forest-600 dark:hover:text-forest-100 transition-colors"
+              className="block py-2 text-sm text-slate-400 hover:text-blue-600 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {item.label}

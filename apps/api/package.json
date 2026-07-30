@@ -4,7 +4,7 @@
   "description": "Portfolio API",
   "main": "dist/main.js",
   "scripts": {
-    "dev": "nest start --watch",
+    "dev": "PORT=3001 nest start --watch",
     "build": "nest build",
     "start": "node dist/main.js",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\""

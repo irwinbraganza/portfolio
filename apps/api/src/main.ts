@@ -8,6 +8,8 @@ async function bootstrap() {
   const port = parseInt(process.env.PORT || '3001', 10);
   const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 
+  app.setGlobalPrefix('api');
+
   app.enableCors({
     origin: corsOrigin.split(',').map(o => o.trim()),
     credentials: true
