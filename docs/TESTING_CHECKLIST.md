@@ -108,34 +108,32 @@ Complete verification before deployment.
 - [ ] Header sticky and responsive
 - [ ] Navigation links scroll to sections:
   - [ ] About
-  - [ ] Leadership
   - [ ] Case Studies
   - [ ] Architecture
   - [ ] Technologies
-  - [ ] Timeline
+  - [ ] Experience
   - [ ] Contact
 
 - [ ] Mobile menu opens/closes
 - [ ] Footer displays with links and copyright
 
 #### Buttons & Links
-- [ ] "Explore My Work" button scrolls to About
-- [ ] "Download Resume" opens/downloads resume.pdf
+
+- [ ] "View Case Studies" button scrolls to case studies
+- [ ] "Download Resume" button opens/downloads resume.pdf
 - [ ] "LinkedIn" link opens LinkedIn profile
 - [ ] "GitHub" link opens GitHub profile
 - [ ] "Email" link opens email client
 - [ ] Resume link in footer works
 
-#### Dark Mode
-- [ ] Light mode displays correctly
-- [ ] Colors use warm-white background (neutral-50)
-- [ ] Text is charcoal (neutral-900)
-- [ ] Accents are deep green (forest-700)
+#### Dark Theme
 
-- [ ] Dark mode toggle works (if implemented)
-- [ ] Dark colors are appropriate
-- [ ] Text is readable in dark mode
-- [ ] No contrast violations
+- [ ] Dark theme displays correctly
+- [ ] Colors use slate background (slate-900)
+- [ ] Text is light slate (slate-50)
+- [ ] Accents are bright blue (blue-600)
+- [ ] Text is readable
+- [ ] No contrast violations (WCAG AA)
 
 #### Responsive Design
 - [ ] Mobile (375px width)

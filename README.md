@@ -140,7 +140,7 @@ Set environment variables via `.env` or `.env.local` files in each app directory
 
 **Features:**
 - App Router with TypeScript
-- Tailwind CSS + light/dark mode
+- Tailwind CSS dark theme
 - Responsive mobile-first design
 - API integration with fallback
 - SEO metadata and Open Graph

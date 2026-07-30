@@ -14,7 +14,7 @@ Website runs on `http://localhost:3000`
 ## Features
 
 - Production-ready Next.js App Router
-- Tailwind CSS with light/dark mode
+- Tailwind CSS dark theme
 - Responsive mobile-first design
 - API integration with graceful fallback
 - SEO optimized with metadata
