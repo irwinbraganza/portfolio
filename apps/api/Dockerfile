@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
@@ -6,8 +6,8 @@ COPY package.json pnpm-lock.yaml ./
 RUN corepack enable pnpm && pnpm install --frozen-lockfile
 
 COPY . .
-RUN pnpm build
+RUN CI=true pnpm --filter @irwin/api build
 
 EXPOSE 3001
 
-CMD ["node", "dist/main.js"]
+CMD ["node", "apps/api/dist/main.js"]

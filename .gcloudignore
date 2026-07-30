@@ -1,0 +1,16 @@
+# .git
+.git
+.gitignore
+.gcloudignore
+node_modules
+.env
+.env.local
+.DS_Store
+*.log
+build/
+dist/
+.next/
+.turbo/
+coverage/
+.vscode/
+.idea/

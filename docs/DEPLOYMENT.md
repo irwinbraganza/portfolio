@@ -113,19 +113,23 @@ jobs:
    - Go to "Manage Custom Domains"
    - Map `api.yourdomain.com` to the service
 
-### Option 2: gcloud CLI
+### Option 2: Cloud Build + Cloud Run (Recommended)
 
 ```bash
-# Build and deploy in one command
+# Build with Cloud Build (handles x86_64 architecture)
+gcloud builds submit . --config=cloudbuild.yaml
+
+# Deploy to Cloud Run
 gcloud run deploy portfolio-api \
-  --source=apps/api \
+  --image gcr.io/YOUR_PROJECT_ID/portfolio-api:latest \
   --platform=managed \
   --region=us-central1 \
+  --port=3001 \
   --allow-unauthenticated \
-  --set-env-vars PORT=3001,CORS_ORIGIN=https://yourdomain.com
+  --set-env-vars CORS_ORIGIN=https://yourdomain.com
 ```
 
-### Option 3: Automated Deployment
+### Option 3: Automated Deployment with GitHub Actions
 
 Create `.github/workflows/deploy-api.yml`:
 
@@ -137,6 +141,9 @@ on:
     branches: [main]
     paths:
       - 'apps/api/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'cloudbuild.yaml'
 
 jobs:
   deploy:
@@ -147,15 +154,13 @@ jobs:
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
-      - run: |
-          gcloud builds submit \
-            --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/portfolio-api \
-            --directory apps/api
+      - run: gcloud builds submit . --config=cloudbuild.yaml
       - run: |
           gcloud run deploy portfolio-api \
-            --image=gcr.io/${{ secrets.GCP_PROJECT_ID }}/portfolio-api \
-            --platform=managed \
-            --region=us-central1 \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/portfolio-api:latest \
+            --platform managed \
+            --region us-central1 \
+            --port 3001 \
             --allow-unauthenticated \
             --set-env-vars CORS_ORIGIN=${{ secrets.WEB_URL }}
 ```
