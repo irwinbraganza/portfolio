@@ -1,0 +1,24 @@
+.github/workflows/deploy-api.yml
+  s_be6f11c6ce45df::t_6097750f53d9eb 19-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "3717c4212bc9bd4701a37b95da4dded77c42812f",
+  "prompts": {},
+  "humans": {
+    "h_e79d948e5ef7a2": {
+      "author": "irwinbraganza <irwin.braganza@deliveryhero.com>"
+    }
+  },
+  "sessions": {
+    "s_be6f11c6ce45df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cdd54ecc-298f-4821-ae42-5ceed01417cf",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Irwin Braganza <irwinbraganza@gmail.com>"
+    }
+  }
+}
