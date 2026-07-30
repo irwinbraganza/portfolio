@@ -131,6 +131,24 @@ gcloud run deploy portfolio-api \
 
 ### Option 3: Automated Deployment with GitHub Actions
 
+#### Prerequisites
+
+Create a GCP service account with these roles:
+- Cloud Build Editor
+- Cloud Run Admin
+- Service Account User
+- Service Usage Consumer
+- Storage Admin
+
+Download the service account JSON key and add it as `GCP_SA_KEY` GitHub Secret.
+
+Add these GitHub Secrets:
+- `GCP_PROJECT_ID`: Your GCP project ID
+- `GCP_SA_KEY`: Service account JSON (base64 encoded if using actions/github-script)
+- `WEB_URL`: Your frontend URL (e.g., `https://yourdomain.com`)
+
+#### Setup
+
 Create `.github/workflows/deploy-api.yml`:
 
 ```yaml
@@ -144,17 +162,24 @@ on:
       - 'package.json'
       - 'pnpm-lock.yaml'
       - 'cloudbuild.yaml'
+      - '.github/workflows/deploy-api.yml'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
+      - uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
       - uses: google-github-actions/setup-gcloud@v1
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
+
       - run: gcloud builds submit . --config=cloudbuild.yaml
+      
       - run: |
           gcloud run deploy portfolio-api \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/portfolio-api:latest \
@@ -164,6 +189,30 @@ jobs:
             --allow-unauthenticated \
             --set-env-vars CORS_ORIGIN=${{ secrets.WEB_URL }}
 ```
+
+#### Important Files
+
+Ensure these files exist and are properly configured:
+
+**`.gcloudignore`** — Excludes files from Cloud Build upload:
+```
+.git
+node_modules
+.env
+.env.local
+```
+
+**`.dockerignore`** — Excludes files from Docker build context:
+```
+.git
+node_modules
+.env
+.env.local
+```
+
+**`pnpm-lock.yaml`** — Must be tracked in git (remove from `.gitignore` if present)
+
+**`cloudbuild.yaml`** — Configured to build with x86_64 architecture
 
 ## Domain Configuration
 
